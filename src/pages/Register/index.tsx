@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { register } from "../../actions/login";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../App.css";
 
 const Register = () => {
@@ -38,10 +38,11 @@ const Register = () => {
     setLoading(true);
 
     const res = await register(formData);
+    console.log("res: ", res);
 
-    if (res) {
-      navigate("/");
-    }
+    if (res) navigate("/");
+    else setErrors({ message: "Not able to Register!!" });
+
     setLoading(false);
   };
 
@@ -125,8 +126,11 @@ const Register = () => {
           {errors.password && <p>{errors.password}</p>}
         </div>
 
+        {errors.message && <div>{errors.message}</div>}
+
         <button type="submit">Register</button>
       </form>
+      <Link to={"/login"}>Login</Link>
     </div>
   );
 };

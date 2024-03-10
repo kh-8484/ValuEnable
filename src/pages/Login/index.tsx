@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../actions/login";
 import "../../App.css";
 
@@ -34,9 +34,9 @@ const Login = () => {
 
     const res = await login(formData);
 
-    if (res) {
-      navigate("/");
-    }
+    if (res) navigate("/");
+    else setErrors({ message: "Email or Password Incorrect" });
+
     setLoading(false);
   };
 
@@ -86,6 +86,9 @@ const Login = () => {
 
         <button type="submit">Login</button>
       </form>
+      {errors.message && <div>{errors.message}</div>}
+
+      <Link to={"/register"}>Register</Link>
     </div>
   );
 };

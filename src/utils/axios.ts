@@ -14,6 +14,7 @@ axiosInstance.interceptors.request.use((config) => {
 });
 
 axiosInstance.interceptors.response.use((response) => {
+  console.log('response?.data?.status: ', response?.data?.status);
   if (response?.data?.status == 401) {
     localStorage.clear();
     window.location.href = "/login";

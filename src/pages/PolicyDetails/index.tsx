@@ -18,7 +18,7 @@ const PolicyDetails = () => {
   return (
     <div>
       <h2>Policy Detail</h2>
-      {data.length ? <h4>IRR - {data[19].irr}</h4> : null}
+      {data.length ? <h4>IRR :  {data[19].irr}</h4> : null}
       <table border={1}>
         <thead>
           <tr>
