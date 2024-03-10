@@ -38,7 +38,6 @@ const Register = () => {
     setLoading(true);
 
     const res = await register(formData);
-    console.log("res: ", res);
 
     if (res) navigate("/");
     else setErrors({ message: "Not able to Register!!" });
